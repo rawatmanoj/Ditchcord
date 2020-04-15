@@ -1,0 +1,25 @@
+.profile-title {
+  color: #fff;
+
+  &-link {
+    &:visited,
+    &:link {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $brand-primary-light;
+    }
+  }
+
+  &-avatar {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color: $brand-primary-light;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+  }
+}
