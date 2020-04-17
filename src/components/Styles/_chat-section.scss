@@ -1,3 +1,28 @@
 .chat-section {
     padding: $spacer;
+    height: calc(100vh - 70px);
+    overflow-y: hidden;
+    
+    .messages {
+        height: calc(100vh - 150px);
+        overflow: auto;
+
+        .message-box {
+            display: flex;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.sender-avatar {
+    background-color: $brand-primary-light;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    margin-right: 10px;
 }
