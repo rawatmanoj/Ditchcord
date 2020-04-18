@@ -6,19 +6,19 @@
             return (
                 
             
-                <div class="sidenav bg-dark">
-                    <div class="nav nav-bordered nav-stacked flex-column">
+                <div className="sidenav bg-dark">
+                    <div className="nav nav-bordered nav-stacked flex-column">
 
-                        <div class="profile-title">
-                            <span class="profile-title-avatar">N</span>
-                            <a class="profile-title-link profile-name-margin" href="#">Nigga_plzz</a>
+                        <div className="profile-title">
+                            <span className="profile-title-avatar">N</span>
+                            <a className="profile-title-link profile-name-margin" href="/#">Nigga_plzz</a>
                         </div>
 
-                        <div class="nav-divider"></div>
+                        <div className="nav-divider"></div>
 
                         <Channels/>
                         
-                        <div class="nav-divider"></div>
+                        <div className="nav-divider"></div>
                         
                     <DirectMessages/>
                         

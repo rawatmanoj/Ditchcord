@@ -5,7 +5,7 @@ import '../Styles/main.scss'
 class Home extends Component {
     render() {
         return (
-            <div class="app-container">
+            <div className="app-container">
                   <SideBar/>
                   <ChatArea/>
             </div>

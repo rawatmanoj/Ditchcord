@@ -6,18 +6,29 @@ class ChatForm extends Component {
    
     componentDidMount(){
           
+        this.startSocket();
+    
+    }
+
+    componentDidUpdate(){
+        this.startSocket();
+    }
+
+    startSocket(){
+
         const ENDPOINT = 'localhost:5000' 
         let socket = io(ENDPOINT);
 
-        console.log(socket);
+        socket.emit('join',{name:"manoj",room:"room1"});
+
     }
 
 
     render() {
         return (
             <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Type Your Message Here" />
+                <div className="form-group">
+                    <input type="text" className="form-control" placeholder="Type Your Message Here" />
                 </div>
             </form>
         );
