@@ -1,38 +1,51 @@
-import React, { Component } from 'react';
-import io from 'socket.io-client';
+    import React, { Component } from 'react';
+    import io from 'socket.io-client';
+    import {reduxForm,Field} from 'redux-form';
+    import {connect} from 'react-redux';
 
-class ChatForm extends Component {
+    class ChatForm extends Component {
 
-   
-    componentDidMount(){
-          
-        this.startSocket();
-    
-    }
+        // componentDidMount(){
+            
+        //     this.startSocket();
+        
+        // }
 
-    componentDidUpdate(){
-        this.startSocket();
-    }
+        componentDidUpdate(){
+            const ENDPOINT = 'localhost:5000' ;
 
-    startSocket(){
+            this.socket = io(ENDPOINT);
+        }
 
-        const ENDPOINT = 'localhost:5000' 
-        let socket = io(ENDPOINT);
+      
 
-        socket.emit('join',{name:"manoj",room:"room1"});
-
-    }
-
-
-    render() {
-        return (
-            <form>
+        renderInput(props){
+             console.log(props);
+            return(
                 <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Type Your Message Here" />
+                    <input type="text" className="form-control" {...props.input} />
                 </div>
-            </form>
-        );
-    }
-}
+            ) 
 
-export default ChatForm;
+        }
+
+        render() {
+
+            console.log(this.props);
+           
+            return (
+                // <form onSubmit={this.onSubmit} >
+                //     <div className="form-group">
+                //         <input type="text" className="form-control"  value={this.state.value} onChange={this.onChange} />
+                //     </div>
+                // </form>
+                <form>
+                    <Field name="sendMesssage" component={this.renderInput} />
+                </form>
+            );
+        }
+    }
+
+    export default reduxForm({
+        form:'sendChats'
+    })(ChatForm);
