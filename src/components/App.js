@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Login from './Elements/Login/Login';
+// import Login from './Login';
 import Home from './Elements/index';
 
 const App = () => {
@@ -10,8 +10,8 @@ const App = () => {
         <BrowserRouter>
             <div>
                 
-                <Route exact path="/"  component={Login} />
-                <Route exact path="/home" component={Home}  />
+                {/* <Route exact path="/"  component={Login} /> */}
+                <Route exact path="/" component={Home}  />
             </div>
         </BrowserRouter>
         </div>
