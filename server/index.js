@@ -17,8 +17,8 @@
             console.log("user has left");
         });
 
-        socket.on('join',({name,room})=>{
-            console.log(name,room);
+        socket.on('send message',(msg)=>{
+            io.emit('send message',msg);
         })
 
     });

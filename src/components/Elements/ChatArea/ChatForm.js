@@ -5,14 +5,10 @@
 
     class ChatForm extends Component {
 
-        // componentDidMount(){
-            
-        //     this.startSocket();
-        
-        // }
+      
 
-        componentDidUpdate(){
-            const ENDPOINT = 'localhost:5000' ;
+        componentDidMount(){
+            const ENDPOINT = 'localhost:5000';
 
             this.socket = io(ENDPOINT);
         }
@@ -20,7 +16,7 @@
       
 
         renderInput(props){
-             console.log(props);
+           // console.log(props);
             return(
                 <div className="form-group">
                     <input type="text" className="form-control" {...props.input} />
@@ -29,23 +25,45 @@
 
         }
 
+        onSubmit=(formValue)=>{
+            
+          //console.log(formValue.sendMesssage);
+          this.socket.emit('send message',formValue.sendMesssage);
+          this.props.reset();
+
+          this.socket.on('send message',(msg)=>console.log(msg));
+        }
+
+        
+
         render() {
 
-            console.log(this.props);
+         //console.log(this.props);
            
             return (
-                // <form onSubmit={this.onSubmit} >
-                //     <div className="form-group">
-                //         <input type="text" className="form-control"  value={this.state.value} onChange={this.onChange} />
-                //     </div>
-                // </form>
-                <form>
+                
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     <Field name="sendMesssage" component={this.renderInput} />
                 </form>
             );
         }
     }
 
+    const validate = formValues =>{
+         
+        const errors= {};
+
+         if(!formValues.sendMesssage){
+
+          errors.sendMesssage="enter a message";
+
+         }
+
+         return errors;
+    }
+
     export default reduxForm({
-        form:'sendChats'
+        form:'sendChats',
+        validate,
+      
     })(ChatForm);
