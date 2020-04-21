@@ -1,20 +1,13 @@
     import React, { Component } from 'react';
-    import io from 'socket.io-client';
     import {reduxForm,Field} from 'redux-form';
     import {connect} from 'react-redux';
+    import socketio from '../../socket';
+    const socket = socketio();
+    
 
     class ChatForm extends Component {
 
-      
-
-        componentDidMount(){
-            const ENDPOINT = 'localhost:5000';
-
-            this.socket = io(ENDPOINT);
-        }
-
-      
-
+       
         renderInput(props){
            // console.log(props);
             return(
@@ -28,10 +21,10 @@
         onSubmit=(formValue)=>{
             
           //console.log(formValue.sendMesssage);
-          this.socket.emit('send message',formValue.sendMesssage);
+          socket.emit('send message',formValue.sendMesssage);
           this.props.reset();
 
-          this.socket.on('send message',(msg)=>console.log(msg));
+         
         }
 
         
