@@ -1,9 +1,7 @@
     import React, { Component } from 'react';
     import {reduxForm,Field} from 'redux-form';
     import {connect} from 'react-redux';
-    import socketio from '../../socket';
-    const socket = socketio();
-    
+   
 
     class ChatForm extends Component {
 
@@ -20,8 +18,8 @@
 
         onSubmit=(formValue)=>{
             
-          //console.log(formValue.sendMesssage);
-          socket.emit('send message',formValue.sendMesssage);
+          console.log("hello");
+        
           this.props.reset();
 
          

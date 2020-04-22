@@ -1,7 +1,5 @@
     import React, { Component } from 'react';
     import ChatForm from './ChatForm';
-    import socketio from '../../socket';
-    const socket = socketio();
     class ChatArea extends Component {
        
     
