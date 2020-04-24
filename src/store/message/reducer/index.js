@@ -1,9 +1,9 @@
-import React from 'react';
-import {MESSAGE_SENT,MESSAGE_RECEIVED} from '../actions';
+
+import {MESSAGE_SENT,OUTGOING_MESSAGE_CHANGED,MESSAGE_RECEIVED} from '../actions';
 
 const INITIAL_STATE = {
     outgoingMessage: '',
-    threads: {}
+    threads: ''
 };
 
 const messageReducer = (state = INITIAL_STATE, action) => {
@@ -17,12 +17,25 @@ const messageReducer = (state = INITIAL_STATE, action) => {
             );
             break;
 
+        case OUTGOING_MESSAGE_CHANGED:
+            reduced = Object.assign({},
+            state,
+                    {outgoingMessage: action.text}
+            );
+            break;
         case MESSAGE_RECEIVED:
-    
+          
+            reduced = Object.assign(
+                state,{threads:action.message}
+            );
+           
 
         default:
+          
             reduced = state;    
+            console.log(reduced);
     }
+   
     return reduced;
 };
 

@@ -1,7 +1,8 @@
     import React, { Component } from 'react';
     import {reduxForm,Field} from 'redux-form';
     import {connect} from 'react-redux';
-   
+    import { sendMessage } from '../../../store/message/actions';
+
 
     class ChatForm extends Component {
 
@@ -18,7 +19,7 @@
 
         onSubmit=(formValue)=>{
             
-          console.log("hello");
+          this.props.sendMessage(formValue.sendMesssage);
         
           this.props.reset();
 
@@ -57,4 +58,4 @@
         form:'sendChats',
         validate,
       
-    })(ChatForm);
+    })(connect(null,{sendMessage})(ChatForm));

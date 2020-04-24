@@ -20,7 +20,7 @@ export default class Socket {
         // Connect
         const host = `http://localhost:${port}`;
         this.socket = io.connect(host);
-
+        console.log("connected");
         // Set listeners
         this.socket.on(Protocol.CONNECT, this.onConnected);
         this.socket.on(Protocol.DISCONNECT, this.onDisconnected);
@@ -30,10 +30,11 @@ export default class Socket {
 
     // Received connect event from socket
     onConnected = () => {
+        console.log("hello");
         this.sendIdent();
         this.socket.on(Protocol.IM, this.onMessage);
         this.socket.on(Protocol.UPDATE_CLIENT, this.onUpdateClient);
-        this.onChange(true);
+       
     };
 
     // Received disconnect event from socket

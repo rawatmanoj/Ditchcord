@@ -1,5 +1,6 @@
     import React, { Component } from 'react';
     import ChatForm from './ChatForm';
+    import {connect} from 'react-redux';
     class ChatArea extends Component {
        
     
@@ -34,23 +35,6 @@
             </div>
         </div>
         </div>
-        <div className="messages">
-            <div className="message-box">
-            <div className="sender-avatar">N</div>
-            <div className="message">
-                <div>
-                    <span className="font-weight-bold">Niket</span>
-                    <small className="ml-2 text-muted">6:10pm</small>
-                </div>
-                <div>hi</div>
-                
-            </div>
-        </div>
-        </div>
-      
-      
-     
-
             <ChatForm/>
                 </div>
             </div>
@@ -58,4 +42,8 @@
         }
     }
 
-    export default ChatArea;
+    const mapStateToProps = (state) => {
+          console.log(state.messageState);
+    }
+
+    export default connect(mapStateToProps)(ChatArea);

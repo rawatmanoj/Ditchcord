@@ -16,6 +16,7 @@ export const connectionChanged = isConnected => {
 
 // The user clicked the connect button
 export const connectSocket = (port) => {
+    console.log("connecting")
     return {
         type: CONNECT_SOCKET
     };

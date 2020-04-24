@@ -17,8 +17,10 @@
             console.log("user has left");
         });
 
-        socket.on('send message',(msg)=>{
-            io.emit('send message',msg);
+        socket.on('im',(msg)=>{
+            //io.emit('send message',msg);
+            console.log(msg.text);
+            io.emit('im',msg.text);
         })
 
     });
