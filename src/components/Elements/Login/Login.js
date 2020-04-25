@@ -9,7 +9,7 @@ class Login extends Component {
                     <div className="login-box-divider"></div>
                     <button className="btn btn-dark">
                         <i className="fab fa-google mr-3"></i>
-                        Login with Google
+                       <a href="/auth/google">Login with Google</a> 
                     </button>
                 </div>
             </div>

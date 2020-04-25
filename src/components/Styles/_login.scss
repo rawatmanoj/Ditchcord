@@ -31,6 +31,10 @@
             animation: initiate 1s ease;
         }
 
+        a:hover {
+            text-decoration: none;
+          }
+
         &-divider {
             border-bottom: 1px solid rgba($brand-primary, 0.5);
             width: 70%;
