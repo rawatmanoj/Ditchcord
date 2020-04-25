@@ -2,8 +2,10 @@
     const socketio = require('socket.io');
     const http = require('http');
     const passport = require('passport');
-    const GoogleStrategy = require('passport-google-oauth20').Strategy;
-    const keys = require('./config/keys');
+    const bodyParser = require('body-parser');
+    const cookieSession = require('cookie-session');
+
+    const authRoutes  = require('./routes/authRoutes');
 
     const PORT = process.env.PORT || 5000;
 
@@ -14,33 +16,21 @@
     const server = http.createServer(app);
     const io = socketio(server);
 
+    require('./services/passport');
 
 
-    passport.use(new GoogleStrategy({
-        clientID:keys.googleClientID,
-        clientSecret:keys.googleClientSecret,
-        callbackURL:'/auth/google/callback',
-    },(accessToken,refreshToken,profile,done)=>{
-       console.log(profile);
-    })
-    );
+    app.use(bodyParser.json());
 
-    app.get('/auth/google',passport.authenticate('google',{
-        scope:['profile','email']
-    })
-    );
+    app.use(cookieSession({
+        maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
+        keys: ['randomstringhere']
+    }));
+    
+    app.use(passport.initialize()); // Used to initialize passport
+    app.use(passport.session()); 
 
-    app.get(
-        '/auth/google/callback', 
-        passport.authenticate('google'),
-        (req,res)=>{
-            res.redirect('/home');
-        }
-       
-        );
-
-
-
+    authRoutes(app);
+    
 
 
     io.on('connection',(socket)=>{
