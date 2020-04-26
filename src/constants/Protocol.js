@@ -6,3 +6,4 @@ export const DISCONNECT    = 'disconnect';
 export const CONNECT_ERR   = 'connect_error';
 export const RECONNECT_ERR = 'reconnect_error';
 export const UPDATE_CLIENT = 'update_client';
+export const FETCH_USER    = 'fetch_user';

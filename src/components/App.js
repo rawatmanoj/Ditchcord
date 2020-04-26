@@ -1,10 +1,19 @@
 import React from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
 import Login from './Elements/Login/Login';
 import Home from './Elements/index';
-import './Styles/main.scss'
-const App = () => {
+import './Styles/main.scss';
+import {fetchUser} from '../store/auth/authAction';
+import {connect} from 'react-redux';
+
+class App extends React.Component { 
+
+    componentDidMount(){
+        this.props.fetchUser();
+    }
+
+
+render(){
     return (
         <div>
         <BrowserRouter>
@@ -17,6 +26,7 @@ const App = () => {
         </BrowserRouter>
         </div>
     );
+}
 };
 
-export default App;
+export default connect(null,{fetchUser})(App);

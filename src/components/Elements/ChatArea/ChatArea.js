@@ -42,8 +42,6 @@
         }
     }
 
-    const mapStateToProps = (state) => {
-          console.log(state.messageState);
-    }
+    
 
-    export default connect(mapStateToProps)(ChatArea);
+    export default ChatArea;

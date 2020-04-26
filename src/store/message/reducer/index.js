@@ -28,12 +28,12 @@ const messageReducer = (state = INITIAL_STATE, action) => {
             reduced = Object.assign(
                 state,{threads:action.message}
             );
-           
+            break;
 
         default:
           
             reduced = state;    
-            console.log(reduced);
+           
     }
    
     return reduced;
