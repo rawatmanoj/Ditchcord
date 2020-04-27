@@ -18,7 +18,7 @@
 
                         <div className="profile-title">
                             <span className="profile-title-avatar">N</span>
-            <a className="profile-title-link profile-name-margin" href="/#">{this.props.user}</a>
+                                <a className="profile-title-link profile-name-margin" href="/#">{this.props.user}</a>
                         </div>
 
                         <div className="nav-divider"></div>
